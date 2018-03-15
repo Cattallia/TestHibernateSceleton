@@ -5,55 +5,55 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
-import org.itstep.model.Account;
+import org.itstep.model.Good;
 import org.itstep.util.HibernateUtil;
 
-public class AccountDAO {
-
+public class GoodDAO {
+	
 	private Session session;
 
-	public void save(Account account) {
+	public void save(Good good) {
 
 		session = HibernateUtil.getSessionFactory().openSession();
 
 		session.getTransaction().begin();
 
-		session.save(account);
+		session.save(good);
 
 		session.getTransaction().commit();
 
 		session.close();
 	}
 
-	public Account get(String login) {
+	public Good get(String asin) {
 
 		session = HibernateUtil.getSessionFactory().openSession();
 
 		session.getTransaction().begin();
 
-		Account account = session.get(Account.class, login);
+		Good good = session.get(Good.class, asin);
 
 		session.getTransaction().commit();
 
 		session.close();
 
-		return account;
+		return good;
 	}
 
-	public List<Account> getByNameAndPassword(String name, String password) {
+	public List<Good> getByNameAndShopUrl(String name, String shopUrl) {
 
 		session = HibernateUtil.getSessionFactory().openSession();
 
 		session.getTransaction().begin();
 
-		Query query = session.createNativeQuery("SELECT * FROM accounts WHERE first_name=:name AND password=:pass",
-				Account.class);
+		Query query = session.createNativeQuery("SELECT * FROM goods WHERE good_name=:name AND shop_url=:url",	
+				Good.class);
 
 		query.setParameter("name", name);
 
-		query.setParameter("pass", password);
+		query.setParameter("url", shopUrl);
 
-		List<Account> result = query.getResultList();
+		List<Good> result = query.getResultList();
 
 		session.getTransaction().commit();
 
@@ -62,12 +62,12 @@ public class AccountDAO {
 		return result;
 	}
 
-	public void delete(Account account) {
+	public void delete(Good good) {
 		session = HibernateUtil.getSessionFactory().openSession();
 
 		session.getTransaction().begin();
 
-		session.delete(account);
+		session.delete(good);
 
 		session.getTransaction().commit();
 

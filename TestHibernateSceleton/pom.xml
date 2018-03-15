@@ -53,4 +53,9 @@
        <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+  		<sourceDirectory>java</sourceDirectory>
+         <outputDirectory>${project.build.directory}/{my_test_project}</outputDirectory>
+         <finalName>${project.artifactId}-${project.version}</finalName>
+             </build>
 </project>
