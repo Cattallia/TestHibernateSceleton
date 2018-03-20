@@ -53,9 +53,21 @@
        <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-  		<sourceDirectory>java</sourceDirectory>
-         <outputDirectory>${project.build.directory}/{my_test_project}</outputDirectory>
-         <finalName>${project.artifactId}-${project.version}</finalName>
+	<build>
+         <outputDirectory>my-project</outputDirectory>
+          <finalName>my-test-project_${version}</finalName>
+         <sourceDirectory>src/main/java</sourceDirectory>
+            <resources>
+                <resource>
+                    <directory>${basedir}/src/main/java</directory>
+                </resource>
+            </resources>
+                 <plugins>
+                     <plugin>
+                         <groupId>org.apache.maven.plugins</groupId>
+                         <artifactId>maven-pmd-plugin</artifactId>
+                         <version>3.1</version>
+                     </plugin>
+                 </plugins>
              </build>
 </project>
