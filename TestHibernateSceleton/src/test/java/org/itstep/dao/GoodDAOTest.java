@@ -13,7 +13,7 @@
 //
 //public class GoodDAOTest {
 //
-//	Good good = new Good();;
+//	Good good = new Good();
 //
 //	@Before
 //	public void setDataToDB() {
@@ -46,5 +46,4 @@
 //		GoodDAO goodDAO = new GoodDAO();
 //		goodDAO.delete(good);
 //	}
-//
-//} //ctrl+shift+c
+//} // ctrl+shift+c
